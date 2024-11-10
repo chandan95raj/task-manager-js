@@ -32,22 +32,23 @@ class Model {
         return false;
     }
 
+    addTask(task) {
+        this.tasks.push(task);
+        this.saveTasks();
+    }
+
     logoutUser() {
         this.isLoggedIn = false;
         localStorage.setItem('isLoggedIn', 'false');
     }
 
-    addTask(task) {
-        this.tasks.push(task);
-        this.saveTasks();
+    getTasks() {
+        return this.tasks;
     }
 
     deleteTask(taskId) {
         this.tasks = this.tasks.filter(task => task.id !== taskId);
         this.saveTasks();
     }
-
-    getTasks() {
-        return this.tasks;
-    }
+   
 }
